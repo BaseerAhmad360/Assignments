@@ -1,0 +1,8 @@
+forLoop:  Check Prime:-> enter number, Factorial number:-> Enter a number wnt factorial :- ,   Harmonic number:-> enter value of N , Power_2:->  enter value of N ,  prime_factoralisation:-> enter no:- , prime_number_range:-> enter number range strt
+whileLoop: Magic_number:-> is number is less than 50 yes: , Power_2_till_256:-> Enter the nth number:
+Functions: DegreeF_&_DegreeC:->
+choice Conversion
+1]degF
+2]degC
+Palidroma_number:-> enter the number 
+Prime_palidroma_prime:-> Please select choice 1)Prime check 2)Check pallindrome 3) check pallindrom is prime :
