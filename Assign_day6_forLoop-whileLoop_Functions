@@ -1,8 +1,384 @@
-forLoop:  Check Prime:-> enter number, Factorial number:-> Enter a number wnt factorial :- ,   Harmonic number:-> enter value of N , Power_2:->  enter value of N ,  prime_factoralisation:-> enter no:- , prime_number_range:-> enter number range strt
-whileLoop: Magic_number:-> is number is less than 50 yes: , Power_2_till_256:-> Enter the nth number:
-Functions: DegreeF_&_DegreeC:->
-choice Conversion
-1]degF
-2]degC
-Palidroma_number:-> enter the number 
-Prime_palidroma_prime:-> Please select choice 1)Prime check 2)Check pallindrome 3) check pallindrom is prime :
+=> forLoop:  Check Prime:
+#! /bin/bash -x
+
+echo "enter number"
+read num
+
+for((i=2; i<=num/2; i++))
+do
+  if [ $((num%i)) -eq 0 ]
+  then
+    echo "$num is not a prime number."
+    exit
+  fi
+done
+echo "$num is a prime number."
+
+
+
+=> Factorial number:
+#! /bin/bash
+
+read -p "Enter a number wnt factorial :-" num
+
+fact=1
+
+for((i=2;i<=num;i++))
+do
+  fact=$((fact*i))
+done
+echo $fact
+
+
+
+
+
+=> Harmonic number:
+#! /bin/bash
+
+echo enter value of N
+read N
+
+for((i=1;i<=N;i++))
+do
+  if [ $i -eq $N ]
+  then
+      printf '1/'$i;
+  else
+      printf '1/'$i' + ';
+  fi
+done
+
+
+
+
+=> Power_2:
+#! /bin/bash -x
+
+echo enter value of N
+read N
+
+for (( i=1; i<=N; i++ ))
+do
+     echo $((2**i));
+
+done
+
+
+
+
+=> prime_factoralisation:
+#!/bin/bash
+
+echo enter no:-
+read num 
+for (( i=2;i<=num; i++ ))
+do
+    while [ $((num%$i)) == 0 ]
+	 do
+        echo $i
+        num=$((num/$i))
+    done
+done
+
+
+
+
+=> prime_number_range:
+#! /bin/bash -x
+
+prime=0;
+echo "enter number range strt "
+read a
+echo "enter number range ends "
+read b
+
+for((i=a;i<=b;))
+do
+   for((j=i-1;j>=2;))
+   do
+	if [ $((i % j)) -ne 0 ] ; then
+	 prime=1
+	 else
+	 prime=0
+	fi
+ 	j=$((j - 1))
+
+
+
+
+
+
+
+whileLoop: 
+=> flip_coin_simulator:
+#! /bin/bash -x
+
+echo "flip Coin Simulator"
+
+Head=0
+Tail=0
+while [ $Head != 11 ] && [ $Tail != 11 ]
+do
+	if [ $((RANDOM%2)) -eq 1 ]
+	then
+	    ((Head++))
+	else
+	    ((Tail++))
+	fi
+done
+
+if [ $Head -eq 11 ]
+then
+    echo Head wins 11 times
+else
+    echo Tail wins 11 times
+fi
+
+
+
+
+=>Gamler:
+#! /bin/bash
+
+
+gambler_money=100
+is_bet=1 
+
+bet_times=0
+bet_wons=0
+bet_lose=0
+
+while [ $gambler_money -gt 0 ] && [ $gambler_money -lt 200 ] && [ $is_bet -eq 1 ]
+do
+
+	flip_coin=$((RANDOM%2))
+
+	if [ $flip_coin -eq 0 ] 
+	then
+		bet_wons=$((bet_wons+1))
+	else
+		gambler_money=$((gambler_money-1))
+		bet_lose=$((bet_lose+1))
+	fi
+		bet_times=$((bet_times+1))
+done
+
+echo $bet_wons win game
+echo $bet_times beat made
+
+
+
+
+
+
+=> Magic_number:
+#! /bin/bash -x
+
+high=100
+mid=0
+
+mid=$(((low+high)/2))
+
+isNotMagicNumber=1
+
+while [ $isNotMagicNumber -eq 1 ]
+
+do
+	if [[ "$low" == "$mid" ]]
+	then
+		isNotMagicNumber=0
+		echo "The magic number is $low "
+	else
+		read -p "is number is less than $mid yes:" choice
+	fi
+	if [[ "$choice" == "yes" || "$choice" == "y" || "$choice" == "Y" ]]
+	then
+		high=$mid
+	else
+		low=$mid
+	fi
+
+	mid=$(((low+high)/2))
+done
+
+
+
+
+
+Power_2_till_256:
+#! /bin/bash -x
+
+read -p "Enter the nth number:"  number
+
+counter=0
+
+result=0
+
+
+while [ $counter -le $number ] && [ $result -lt 256 ]
+do
+	result=$((2**counter))
+
+	echo $result
+
+	counter=$((counter+1))
+done
+
+
+
+
+
+
+
+Functions:
+=> DegreeF_&_DegreeC:
+#! /bin/bash -x
+
+
+Conversion (){
+echo "choice Conversion " 
+echo "1]degF" 
+echo "2]degC" 
+read choice
+
+case $choice in
+	1)
+     echo "Fahrenheit to Celsius"
+	  read -p "Degree in Celsius= " degc
+	  degf=$(( (degc*9/5)+32 ))
+	  echo "Faherenhiet =" $degf
+	;;
+
+	2)
+echo
+		echo "Celsius to Fahrenheit"
+		read -p "Degree in Fahreheit= " degf
+		degc=$(( (degf-32)*5/9 ))
+		echo "Celsius =" $degc
+	;;
+
+	*)
+	echo inavalid choice
+esac
+}
+
+Conversion 
+
+
+
+
+
+=> Palidroma_number:
+#! /bin/bash/ -x
+
+function isPallindrome() {
+echo "Enter the number"
+read n
+number=$n
+reverse=0
+while [ $n -gt 0 ]
+do
+a=`expr $n % 10 `
+n=`expr $n / 10 `
+reverse=`expr $reverse \* 10 + $a`
+done
+echo $reverse
+if [ $number -eq $reverse ]
+then
+    echo "Number is palindrome"
+else
+	echo "Number is not palindrome"
+fi
+}
+
+isPallindrome 
+
+
+
+
+
+
+=> Prime_palidroma_prime:
+#! /bin/bash
+
+function isPallindrome() {
+temp=$1
+reverseNum=0
+while [ $temp -ne 0 ]
+do
+	reverseNum=$(( temp%10+ reverseNum*10 ))
+	temp=$((temp/10))
+done
+echo $reverseNum
+
+
+}
+
+function isPrime() {
+
+checkNumber=$1
+count=0
+for ((counter=1 ; counter<=checkNumber ; counter++))
+do
+	if (($checkNumber%counter==0))
+	then
+		count=$((count+1))
+	fi
+done
+
+if (($count==2))
+then
+	echo "The $checkNumber is prime number"
+else
+	echo "The $checkNumber is not an prime number"
+fi
+
+}
+
+read -p "Please select choice 1)Prime check 2)Check pallindrome 3) check pallindrom is prime :" choice
+
+case $choice in
+	1) read -p "Enter the number to check prime: " primeCheckNum
+	isPrime $primeCheckNum;;
+
+	2) read -p "Enter the number to check pallindrome : " pallinCheckNum
+	if [ $pallinCheckNum -eq $(isPallindrome $pallinCheckNum) ]
+	then
+		echo "$pallinCheckNum is Pallindrome number"
+	else
+		echo "$pallinCheckNum is not pallindrome number"
+	fi;;
+	3) read -p "Check pallindrome and prime:" pallinPrimeNum
+	isPrime $(isPallindrome $pallinPrimeNum);;
+	*) echo "Invalid choice";;
+esac
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
