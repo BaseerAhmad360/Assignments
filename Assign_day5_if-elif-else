@@ -1,4 +1,182 @@
-Arithmatic_operation:->  enter value of a :-
-Unit_digit:-> enter single digit no:-
-Unit_series:- enter one no in 10 100 100 1000 series :-
-Weekdays:-> enter no week of day:-
+=> Arithmatic_operation:
+#! /bin/bash -x
+
+echo -n enter value of a :-
+read a
+echo -n enter value of b :-
+read b
+echo -n enter value of c :-
+read c
+
+echo "a+b*c=$((a+b*c))"
+echo "a%b+c=$((a%b+c))"
+echo "c+a/b=$((c+a/b))"
+echo "a*b+c=$((a*b+c))"
+
+exp1=$((a+b*c))
+exp2=$((a%b+c))
+exp3=$((c+a/b))
+exp4=$((a*b+c))
+
+if [ $exp1 -gt $exp2 ] && [ $exp1 -gt $exp3 ] && [ $exp1 -gt $exp4 ]
+then
+    echo "max value $exp1"
+elif [ $exp2 -gt $exp1 ] && [ $exp2 -gt $exp3 ] && [ $exp2 -gt $exp4 ]
+then
+    echo "max value $exp2"
+elif [ $exp3 -gt $exp1 ] && [ $exp3 -gt $exp2 ] && [ $exp3 -gt $exp4 ]
+then
+    echo "max value $exp3"
+else
+    echo " max value $exp4"
+fi
+
+
+if [ $exp1 -lt $exp2 ] && [ $exp1 -lt $exp3 ] && [ $exp1 -lt $exp4 ]
+then
+    echo " min value $exp1"
+elif [ $exp2 -lt $exp1 ] && [ $exp2 -lt $exp3 ] && [ $exp2 -lt $exp4 ]
+then
+    echo " min value $exp2"
+elif [ $exp3 -lt $exp1 ] && [ $exp3 -lt $exp2 ] && [ $exp3 -lt $exp4 ]
+then
+    echo " min value $exp3"
+else
+    echo " min value $exp4"
+fi
+
+
+
+
+
+
+=> Unit_digit:
+#! bin/bash
+
+echo -n "enter single digit no:-" 
+read N
+
+if [ $N -eq 0 ] ;
+then
+   echo zero
+elif [ $N -eq 1 ]  ;
+then
+   echo one
+elif [ $N -eq 2 ] ;
+then
+   echo two
+elif [ $N -eq 3 ] ;
+then
+   echo three
+elif [ $N -eq 4 ] ;
+then
+   echo four
+elif [ $N -eq 5 ] ;
+then
+   echo five
+elif [ $N -eq 6 ] ;
+then
+   echo six
+elif [ $N -eq 7 ] ;
+then
+   echo seven
+elif [ $N -eq 8 ] ;
+then
+   echo eight
+elif [ $N -eq 9 ] ;
+then
+   echo nine
+else
+   echo error enter singl digit no
+fi
+
+
+
+
+
+
+=> Unit_series:
+#! bin/bash
+
+echo -n "enter one no in 10 100 100 1000 series :-"
+read N
+
+if [ $N -eq 1 ] ;
+then
+   echo Unit
+elif [ $N -eq 10 ]  ;
+then
+   echo Ten
+elif [ $N -eq 100 ] ;
+then
+   echo hundred
+elif [ $N -eq 1000 ] ;
+then
+	echo Thousand
+else
+   echo invalid choice
+fi
+
+
+
+
+
+
+=> Weekdays:
+#! bin/bash
+
+echo -n "enter no week of day:-"
+read N
+
+if [ $N -eq 1 ] ;
+then
+   echo sunday
+elif [ $N -eq 2 ]  ;
+then
+   echo monday
+elif [ $N -eq 3 ] ;
+then
+   echo tuesday
+elif [ $N -eq 4 ] ;
+then
+   echo wenesday
+elif [ $N -eq 5 ] ;
+then
+   echo thursday
+elif [ $N -eq 6 ] ;
+then
+   echo friday
+elif [ $N -eq 7 ] ;
+then
+   echo saturday
+else
+   echo invalid choice
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
